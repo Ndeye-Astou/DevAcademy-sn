@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DevAcademy - Corrigés d'exercices de développement web">
+    <title>Corrigés d'exercices | DevAcademy</title>
+    <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
+    <link href="../TP_Bootstrap/Projet_bootstrap.css" rel="stylesheet" />
+    <link href="Devoir_sem2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../TP_Bootstrap/css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        :root {
+            --primary-color: #0c5e11;
+            --secondary-color: #09ff00;
+            --dark-bg: #101010;
+            --light-text: #f8f9fa;
+            --card-bg: #f8f9fa;
+        }
+
+        body {
+            background: linear-gradient(135deg, #73ea6c 0%, #0c5e11 100%);
+            padding: 160px 20px 50px;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(248, 249, 250, 0.95) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+            color: #212529 !important;
+            font-weight: 500;
+            padding: 8px 15px;
+            margin: 0 5px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::before {
+            width: 80%;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            background-color: rgba(12, 94, 17, 0.1);
+            color: var(--primary-color) !important;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+
+        .correction-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .correction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .correction-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .code-container {
+            padding: 20px;
+            background-color: #2d2d2d;
+            color: #f8f9fa;
+            font-family: 'Consolas', 'Monaco', monospace;
+            border-left: 5px solid var(--secondary-color);
+            overflow-x: auto;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-tag {
+            color: #e06c75;
+        }
+
+        .code-attribute {
+            color: #d19a66;
+        }
+
+        .code-value {
+            color: #98c379;
+        }
+
+        .code-comment {
+            color: #5c6370;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-flex;
+            align-items: center;
+            margin: 5px;
+        }
+
+        .action-btn:hover {
+            background-color: #08420d;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .action-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            margin-left: 8px;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 30px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 15px 0;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            body {
+                padding: 130px 15px 30px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+        }
+
+        /* Animation pour le titre */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-title {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                Dev<span>Academy</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="courHtml.html">HTML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courCss.html">CSS</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courBootstrap.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Bootstrap
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="courExercices.html">Exercices</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Tutoriels</a></li>
+                            <li><a class="dropdown-item" href="courBootstrap.html">Apprendre Bootstrap</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courJavaScript.html">JavaScript</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courExercices.html">Exercices</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="courQuiz.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Quiz
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Quizhtml.html">HTML</a></li>
+                            <li><a class="dropdown-item" href="Quizcss.html">CSS</a></li>
+                            <li><a class="dropdown-item" href="Quizjs.html">JavaScript</a></li>
+                            <li><a class="dropdown-item" href="Quizbootstrap.html">Bootstrap</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-success me-2" data-bs-toggle="modal"
+                        data-bs-target="#loginModal">Connexion</a>
+                    <a href="#" class="btn btn-success" data-bs-toggle="modal"
+                        data-bs-target="#registerModal">Inscription</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal Connexion -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Connexion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <form action="/login" method="POST">
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="loginEmail" name="email"
+                                placeholder="votre@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="loginPassword" name="password"
+                                placeholder="Mot de passe" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-success">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Inscription -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Inscription</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="registerName" class="form-label">Nom complet</label>
+                            <input type="text" class="form-control" id="registerName" placeholder="Votre nom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Mot de passe</label>
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Mot de passe" required>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">J'accepte les conditions d'utilisation</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button type="submit" class="btn btn-success">S'inscrire</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <h1 class="page-title animated-title">Corrigés d'Exercices</h1>
+        
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 1 HTML</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+    <span class="code-tag">&lt;h1&gt;</span>Titre de niveau 1<span class="code-tag">&lt;/h1&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 2 HTML</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+<span class="code-tag">&lt;form</span> <span class="code-attribute">action</span>=<span class="code-value">"#"</span> <span class="code-attribute">method</span>=<span class="code-value">"post"</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;label</span> <span class="code-attribute">for</span>=<span class="code-value">"nom"</span><span class="code-tag">&gt;</span>Nom<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attribute">type</span>=<span class="code-value">"text"</span> <span class="code-attribute">id</span>=<span class="code-value">"nom"</span> <span class="code-attribute">name</span>=<span class="code-value">"nom"</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;label</span> <span class="code-attribute">for</span>=<span class="code-value">"prenom"</span><span class="code-tag">&gt;</span>Prénom<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attribute">type</span>=<span class="code-value">"text"</span> <span class="code-attribute">id</span>=<span class="code-value">"prenom"</span> <span class="code-attribute">name</span>=<span class="code-value">"prenom"</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;label</span> <span class="code-attribute">for</span>=<span class="code-value">"adresse"</span><span class="code-tag">&gt;</span>Adresse<span class="code-tag">&lt;/label&gt;</span>
+    <span class="code-tag">&lt;input</span> <span class="code-attribute">type</span>=<span class="code-value">"text"</span> <span class="code-attribute">id</span>=<span class="code-value">"adresse"</span> <span class="code-attribute">name</span>=<span class="code-value">"adresse"</span><span class="code-tag">&gt;</span>
+
+    <span class="code-tag">&lt;button</span> <span class="code-attribute">type</span>=<span class="code-value">"submit"</span><span class="code-tag">&gt;</span>Envoyer<span class="code-tag">&lt;/button&gt;</span>
+
+<span class="code-tag">&lt;/form&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 1 CSS</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+    
+    <span class="code-tag">&lt;style&gt;</span>
+    <span class="code-selector">h5</span> {
+        <span class="code-property">color</span>: <span class="code-value">black</span>;
+    }
+    <span class="code-tag">&lt;/style&gt;</span>
+    
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+    <span class="code-tag">&lt;h5&gt;</span>Titre de niveau 5<span class="code-tag">&lt;/h5&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 2 CSS</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+    
+    <span class="code-tag">&lt;style&gt;</span>
+    <span class="code-keyword">@keyframes</span> <span class="code-value">Animation</span> {
+        <span class="code-keyword">from</span> {
+            <span class="code-property">opacity</span>: <span class="code-value">0</span>;
+            <span class="code-property">transform</span>: <span class="code-value">translateX(-50px)</span>;
+        }
+        <span class="code-keyword">to</span> {
+            <span class="code-property">opacity</span>: <span class="code-value">1</span>;
+            <span class="code-property">transform</span>: <span class="code-value">translateX(0)</span>;
+        }
+    }
+
+    <span class="code-selector">p</span> {
+        <span class="code-property">animation</span>: <span class="code-value">Animation 2s ease-in-out</span>;
+    }
+    <span class="code-tag">&lt;/style&gt;</span>
+    
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+    <span class="code-tag">&lt;p&gt;</span>Ceci est un paragraphe<span class="code-tag">&lt;/p&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 1 JavaScript</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+<span class="code-tag">&lt;script</span> <span class="code-attribute">type</span>=<span class="code-value">"text/javascript"</span><span class="code-tag">&gt;</span>
+<span class="code-comment">// Exercice 1 JavaScript</span>
+<span class="code-comment">// Déclaration de variables</span>
+<span class="code-keyword">let</span> age = <span class="code-value">23</span>;
+console.<span class="code-property">log</span>(age);
+
+<span class="code-keyword">const</span> PI = <span class="code-value">3.14</span>;
+console.<span class="code-property">log</span>(PI);
+
+<span class="code-keyword">var</span> a = <span class="code-value">2</span>;
+<span class="code-keyword">var</span> b = <span class="code-value">'2'</span>;
+console.<span class="code-property">log</span>(!(a == b));
+
+<span class="code-comment">// Redéfinition de constante (impossible)</span>
+<span class="code-comment">// PI = 3.1415</span>
+<span class="code-tag">&lt;/script&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="correction-card">
+            <div class="correction-card-header">Correction 2 JavaScript</div>
+            <div class="code-container">
+                <pre><code><span class="code-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="code-tag">&lt;html lang="fr"&gt;</span>
+<span class="code-tag">&lt;head&gt;</span>
+    <span class="code-tag">&lt;title&gt;</span>Titre de la page<span class="code-tag">&lt;/title&gt;</span>
+<span class="code-tag">&lt;/head&gt;</span>
+<span class="code-tag">&lt;body&gt;</span>
+
+<span class="code-tag">&lt;script</span> <span class="code-attribute">type</span>=<span class="code-value">"text/javascript"</span><span class="code-tag">&gt;</span>
+<span class="code-comment">// Exercice 2 JavaScript - Opérations arithmétiques</span>
+<span class="code-keyword">var</span> x = <span class="code-value">3</span>, y = <span class="code-value">4</span>;
+
+<span class="code-comment">// Addition</span>
+console.<span class="code-property">log</span>(<span class="code-value">'La somme de '</span> + x + <span class="code-value">' et '</span> + y + <span class="code-value">' est : '</span>, x + y);
+
+<span class="code-comment">// Soustraction</span>
+console.<span class="code-property">log</span>(<span class="code-value">'La soustraction de '</span> + x + <span class="code-value">' et '</span> + y + <span class="code-value">' est : '</span>, x - y);
+
+<span class="code-comment">// Multiplication</span>
+console.<span class="code-property">log</span>(<span class="code-value">'La multiplication de '</span> + x + <span class="code-value">' et '</span> + y + <span class="code-value">' est : '</span>, x * y);
+
+<span class="code-comment">// Division</span>
+console.<span class="code-property">log</span>(<span class="code-value">'La division de '</span> + x + <span class="code-value">' et '</span> + y + <span class="code-value">' est : '</span>, x / y);
+
+<span class="code-comment">// Modulo</span>
+console.<span class="code-property">log</span>(<span class="code-value">'Le modulo de '</span> + x + <span class="code-value">' et '</span> + y + <span class="code-value">' est : '</span>, x % y);
+<span class="code-tag">&lt;/script&gt;</span>
+
+<span class="code-tag">&lt;/body&gt;</span>
+<span class="code-tag">&lt;/html&gt;</span></code></pre>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <a href="Quizhtml.html" class="action-btn">
+                Passer aux Quiz <span class="btn-icon">→</span>
+            </a>
+            <a href="courExercices.html" class="action-btn">
+                Voir plus d'exercices <span class="btn-icon">+</span>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 DevAcademy. Tous droits réservés.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation pour les cartes de correction
+            const correctionCards = document.querySelectorAll('.correction-card');
+            correctionCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Gestion de la navbar au scroll
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+            
+            // Tooltip activation
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
